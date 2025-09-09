@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace CheckThisCloud\SillyNames;
 
+use CheckThisCloud\SillyNames\Dictionary\DictionaryFactory;
+
 final readonly class SillyNames
 {
     /** @var array<string> */
@@ -31,22 +33,13 @@ final readonly class SillyNames
 
     public static function getFactory(string $language = 'cs', ?int $seed = null): self
     {
-        $dictionaryPath = __DIR__ . "/dictionary/{$language}.php";
+        $dictionary = DictionaryFactory::create($language);
 
-        if (!file_exists($dictionaryPath)) {
-            throw new \InvalidArgumentException("Dictionary for language '{$language}' not found");
-        }
-
-        $adjectives = [];
-        $subjects = [];
-
-        include $dictionaryPath;
-
-        if ($adjectives === [] || $subjects === []) {
-            throw new \RuntimeException("Invalid dictionary format for language '{$language}': missing adjectives or subjects");
-        }
-
-        return new self($adjectives, $subjects, $seed);
+        return new self(
+            $dictionary->getAdjectives(),
+            $dictionary->getSubjects(),
+            $seed
+        );
     }
 
     public function generate(): string
