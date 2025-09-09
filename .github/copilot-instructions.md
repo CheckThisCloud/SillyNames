@@ -7,15 +7,14 @@ Always reference these instructions first and fallback to search or bash command
 ## Working Effectively
 
 ### Bootstrap and Dependencies
-- **CRITICAL**: This project requires PHP 8.4+ but the development environment has PHP 8.3.6
-- Use `--ignore-platform-reqs` with all Composer commands to bypass PHP version requirement
+- **Compatible**: This project requires PHP 8.3+ and the development environment has PHP 8.3.6
 - **Network Issues**: Composer install often fails due to GitHub API rate limits and timeouts
 - **NEVER CANCEL**: Composer install can take 10+ minutes due to network issues. NEVER CANCEL. Set timeout to 20+ minutes minimum.
 
 **Primary dependency installation:**
 ```bash
 cd /home/runner/work/SillyNames/SillyNames
-composer install --ignore-platform-reqs --no-interaction --prefer-dist
+composer install --no-interaction --prefer-dist
 ```
 - Takes 5-15 minutes depending on network conditions
 - Often fails with timeouts - retry if needed
@@ -23,7 +22,7 @@ composer install --ignore-platform-reqs --no-interaction --prefer-dist
 **Generate autoloader only (if full install fails):**
 ```bash
 cd /home/runner/work/SillyNames/SillyNames
-composer dump-autoload --ignore-platform-reqs
+composer dump-autoload
 ```
 - Takes under 5 seconds
 - Enables `example.php` to run without dev dependencies
@@ -90,7 +89,7 @@ echo $generator->generate(); // Should output: "Playful owl"
 **Run demo (recommended - use generated autoloader):**
 ```bash
 cd /home/runner/work/SillyNames/SillyNames
-composer dump-autoload --ignore-platform-reqs  # Generate autoloader if needed
+composer dump-autoload  # Generate autoloader if needed
 php example.php
 ```
 
@@ -169,14 +168,14 @@ If `composer dump-autoload` fails, use the manual autoloader approach from the T
 ### Composer Scripts (if installed)
 ```bash
 # Install dependencies (often fails due to network)
-composer install --ignore-platform-reqs
+composer install
 
 # Run tests (requires successful install)
 composer test    # Runs PHPUnit
 composer analyse # Runs PHPStan
 
 # Update dependencies (use with caution)
-composer update --ignore-platform-reqs
+composer update
 ```
 
 ## Troubleshooting
@@ -184,20 +183,16 @@ composer update --ignore-platform-reqs
 ### Network/Composer Issues
 - **Problem**: `composer install` times out or fails with GitHub API errors
 - **Solution**: Use manual autoloader for testing (see Testing section)
-- **Alternative**: Try `composer update --ignore-platform-reqs` instead of install
-
-### PHP Version Issues  
-- **Problem**: "Root composer.json requires php >=8.4 but your php version (8.3.6)"
-- **Solution**: Always use `--ignore-platform-reqs` flag with Composer commands
+- **Alternative**: Try `composer update` instead of install
 
 ### Missing Autoloader
 - **Problem**: "Failed opening required 'vendor/autoload.php'"
-- **Solution**: Run `composer dump-autoload --ignore-platform-reqs` to generate autoloader
+- **Solution**: Run `composer dump-autoload` to generate autoloader
 - **Alternative**: If dump-autoload fails, use manual autoloader
 
 ### Missing Vendor Directory
 - **Problem**: No `vendor/` directory exists
-- **Solution**: Run `composer dump-autoload --ignore-platform-reqs` (creates vendor/autoload.php without dependencies)
+- **Solution**: Run `composer dump-autoload` (creates vendor/autoload.php without dependencies)
 - **Note**: This enables basic functionality without dev dependencies (PHPUnit, PHPStan)
 
 ## Code Quality Guidelines
@@ -224,7 +219,7 @@ Always wait for commands to complete - build processes may appear to hang but ar
 **Essential Commands:**
 ```bash
 # Generate autoloader (most important)
-composer dump-autoload --ignore-platform-reqs
+composer dump-autoload
 
 # Run demo
 php example.php
