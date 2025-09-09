@@ -36,7 +36,5 @@
     "sort-packages": true
   },
   "minimum-stability": "stable",
-  "prefer-stable": true,
-  "repositories": {
-  }
+  "prefer-stable": true
 }
