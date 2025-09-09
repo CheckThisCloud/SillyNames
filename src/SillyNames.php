@@ -42,12 +42,24 @@ final readonly class SillyNames
         );
     }
 
+    /** @return array<string> */
+    public static function getSupportedLanguages(): array
+    {
+        return DictionaryFactory::getSupportedLanguages();
+    }
+
     public function generate(): string
     {
         $adjective = $this->randomizer->pickArrayKeys($this->adjectives, 1)[0];
         $subject = $this->randomizer->pickArrayKeys($this->subjects, 1)[0];
 
-        return ucfirst($this->adjectives[$adjective]) . ' ' . $this->subjects[$subject];
+        $adjectiveText = $this->adjectives[$adjective];
+        $subjectText = $this->subjects[$subject];
+        
+        // Use mb_strtoupper for proper Unicode support
+        $capitalizedAdjective = mb_strtoupper(mb_substr($adjectiveText, 0, 1)) . mb_substr($adjectiveText, 1);
+
+        return $capitalizedAdjective . ' ' . $subjectText;
     }
 
     /** @return array<string> */
