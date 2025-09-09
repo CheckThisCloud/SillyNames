@@ -1,0 +1,14 @@
+{
+    "name": "checkthiscloud/silly-names",
+    "description": "Generate silly names",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "CheckThisCloud\\SillyNames\\": "src/"
+        }
+    },
+    "require": {
+      "php": ">=8.4",
+      "phpstan/phpstan": "*"
+    }
+}
