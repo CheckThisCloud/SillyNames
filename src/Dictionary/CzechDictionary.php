@@ -57,4 +57,42 @@ final readonly class CzechDictionary implements DictionaryInterface
             'pes',
         ];
     }
+
+    /**
+     * Get the gender of a Czech noun
+     * @return 'M'|'F' for masculine or feminine
+     */
+    public function getNounGender(string $noun): string
+    {
+        $feminineNouns = [
+            'sova',      // owl
+            'liška',     // fox
+            'ještěrka',  // lizard
+            'želva',     // turtle
+            'kočka',     // cat
+            'panda',     // panda
+        ];
+
+        return in_array($noun, $feminineNouns, true) ? 'F' : 'M';
+    }
+
+    /**
+     * Inflect adjective to match noun gender
+     */
+    public function inflectAdjective(string $adjective, string $gender): string
+    {
+        if ($gender === 'F') {
+            // Convert masculine -ý to feminine -á
+            if (str_ends_with($adjective, 'ý')) {
+                return substr($adjective, 0, -1) . 'á';
+            }
+            // Handle -í adjectives (they don't change)
+            if (str_ends_with($adjective, 'í')) {
+                return $adjective;
+            }
+        }
+
+        // Return masculine form for masculine nouns or unknown cases
+        return $adjective;
+    }
 }
