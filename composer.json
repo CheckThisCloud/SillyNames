@@ -1,8 +1,9 @@
 {
   "name": "checkthiscloud/silly-names",
-  "description": "Generate silly names",
-  "version": "0.0.1",
+  "description": "Generate silly names by combining adjectives and subjects with support for multiple languages",
   "type": "library",
+  "license": "GPL-3.0-or-later",
+  "keywords": ["names", "generator", "silly", "random", "czech", "english"],
   "autoload": {
     "psr-4": {
       "CheckThisCloud\\SillyNames\\": "src/"
@@ -15,10 +16,25 @@
   },
   "require": {
     "php": ">=8.3",
-    "phpstan/phpstan": "*"
+    "ext-mbstring": "*"
   },
   "require-dev": {
-    "phpunit/phpunit": "^12.3",
-    "phpunit/php-code-coverage": "*"
-  }
+    "phpunit/phpunit": "^10.0|^11.0|^12.0",
+    "phpunit/php-code-coverage": "*",
+    "phpstan/phpstan": "^1.0"
+  },
+  "scripts": {
+    "test": "phpunit",
+    "analyse": "phpstan analyse",
+    "check": [
+      "@analyse",
+      "@test"
+    ]
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
 }

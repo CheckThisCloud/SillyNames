@@ -168,4 +168,26 @@ final class SillyNamesTest extends TestCase
         $reflection = new \ReflectionClass($generator);
         $this->assertTrue($reflection->isReadOnly(), 'SillyNames class should be readonly');
     }
+
+    public function testGetSupportedLanguagesReturnsArray(): void
+    {
+        $languages = SillyNames::getSupportedLanguages();
+
+        $this->assertIsArray($languages);
+        $this->assertNotEmpty($languages);
+        $this->assertContains('cs', $languages);
+        $this->assertContains('en', $languages);
+    }
+
+    public function testGetSupportedLanguagesMatchesFactory(): void
+    {
+        $languages = SillyNames::getSupportedLanguages();
+
+        foreach ($languages as $language) {
+            $this->assertIsString($language);
+            // Should be able to create a generator for each supported language
+            $generator = SillyNames::getFactory($language);
+            $this->assertInstanceOf(SillyNames::class, $generator);
+        }
+    }
 }
