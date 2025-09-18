@@ -11,6 +11,7 @@ final class DictionaryFactory
         return match ($language) {
             'cs' => new CzechDictionary(),
             'en' => new EnglishDictionary(),
+            'sk' => new SlovakDictionary(),
             default => throw new \InvalidArgumentException("Dictionary for language '{$language}' not found"),
         };
     }
@@ -18,6 +19,6 @@ final class DictionaryFactory
     /** @return array<string> */
     public static function getSupportedLanguages(): array
     {
-        return ['cs', 'en'];
+        return ['cs', 'en', 'sk'];
     }
 }
