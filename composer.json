@@ -3,7 +3,7 @@
   "description": "Generate silly names by combining adjectives and subjects with support for multiple languages",
   "type": "library",
   "license": "GPL-3.0-or-later",
-  "keywords": ["names", "generator", "silly", "random", "czech", "english"],
+  "keywords": ["names", "generator", "silly", "random", "czech", "english", "slovak"],
   "autoload": {
     "psr-4": {
       "CheckThisCloud\\SillyNames\\": "src/"

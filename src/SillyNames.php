@@ -6,6 +6,7 @@ namespace CheckThisCloud\SillyNames;
 
 use CheckThisCloud\SillyNames\Dictionary\DictionaryFactory;
 use CheckThisCloud\SillyNames\Dictionary\CzechDictionary;
+use CheckThisCloud\SillyNames\Dictionary\SlovakDictionary;
 
 final readonly class SillyNames
 {
@@ -66,6 +67,15 @@ final readonly class SillyNames
             if ($czechDictionary instanceof CzechDictionary) {
                 $gender = $czechDictionary->getNounGender($subjectText);
                 $adjectiveText = $czechDictionary->inflectAdjective($adjectiveText, $gender);
+            }
+        }
+        
+        // Apply Slovak gender agreement if needed
+        if ($this->language === 'sk') {
+            $slovakDictionary = DictionaryFactory::create('sk');
+            if ($slovakDictionary instanceof SlovakDictionary) {
+                $gender = $slovakDictionary->getNounGender($subjectText);
+                $adjectiveText = $slovakDictionary->inflectAdjective($adjectiveText, $gender);
             }
         }
         
