@@ -19,6 +19,12 @@ for ($i = 0; $i < 5; $i++) {
     echo "- " . $generator->generate() . "\n";
 }
 
+echo "\nRandom Slovak names:\n";
+$generator = SillyNames::getFactory('sk');
+for ($i = 0; $i < 5; $i++) {
+    echo "- " . $generator->generate() . "\n";
+}
+
 echo "\n=== Seed Reproducibility Demo ===\n";
 echo "Using seed 12345 for reproducible results:\n";
 

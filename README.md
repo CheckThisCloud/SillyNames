@@ -78,7 +78,7 @@ Check available languages programmatically:
 ```php
 // Get list of supported languages
 $languages = SillyNames::getSupportedLanguages();
-// Returns: ['cs', 'en']
+// Returns: ['cs', 'en', 'sk']
 
 foreach ($languages as $lang) {
     $generator = SillyNames::getFactory($lang);
@@ -89,6 +89,7 @@ foreach ($languages as $lang) {
 Currently supported:
 - `en` - English (default)
 - `cs` - Czech
+- `sk` - Slovak
 
 ```php
 // English names
@@ -98,6 +99,10 @@ echo $enGenerator->generate(); // "Creative Elephant"
 // Czech names  
 $csGenerator = SillyNames::getFactory('cs');
 echo $csGenerator->generate(); // "Kreativní Slon"
+
+// Slovak names
+$skGenerator = SillyNames::getFactory('sk');
+echo $skGenerator->generate(); // "Kreatívny Slon"
 ```
 
 ### Reproducible Results with Seeds
@@ -153,6 +158,10 @@ Examples:
 - **Adjectives**: rychlý, chytrý, veselý, silný, odvážný, moudrý, tichý, jasný, šťastný, přátelský, kreativní, energický, zábavný, laskavý, věrný, upřímný, trpělivý, odpočatý, hravý
 - **Subjects**: lev, tygr, medvěd, vlk, sova, delfín, slon, koala, jednorožec, drak, fenix, králík, liška, ještěrka, želva, koník, panda, kočka, pes
 
+### Slovak Dictionary
+- **Adjectives**: rýchly, múdry, veselý, silný, odvážny, tichý, jasný, šťastný, priateľský, kreatívny, energický, zábavný, laskavý, verný, úprimný, trpezlivý, pokojný, hravý, graciezny, odvážny, zvedavý, jemný, tajomný
+- **Subjects**: lev, tiger, medveď, vlk, sova, delfín, slon, koala, jednorožec, drak, fénix, zajac, líška, jašterica, korytnačka, kôň, panda, mačka, pes
+
 ## API Reference
 
 ### `SillyNames::getFactory(string $language = 'cs', ?int $seed = null): SillyNames`
@@ -160,7 +169,7 @@ Examples:
 Creates a new SillyNames generator.
 
 **Parameters:**
-- `$language` (string): Language code ('en' or 'cs'). Defaults to 'cs'.
+- `$language` (string): Language code ('en', 'cs', or 'sk'). Defaults to 'cs'.
 - `$seed` (int|null): Optional seed for reproducible random generation.
 
 **Returns:** `SillyNames` instance
