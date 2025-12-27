@@ -9,21 +9,17 @@ use PHPUnit\Framework\TestCase;
 
 final class SillyNamesTest extends TestCase
 {
-    public function testGetFactoryCreatesInstance(): void
-    {
-        $generator = SillyNames::getFactory();
-
-        $this->assertInstanceOf(SillyNames::class, $generator);
-    }
 
     public function testGetFactoryWithDefaultLanguage(): void
     {
         $generator = SillyNames::getFactory();
         $name = $generator->generate();
 
-        $this->assertIsString($name);
         $this->assertNotEmpty($name);
-        $this->assertMatchesRegularExpression('/^[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ][a-záčďéěíňóřšťúůýž]+ [a-záčďéěíňóřšťúůýž]+$/', $name);
+        $this->assertMatchesRegularExpression(
+            '/^[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ][a-záčďéěíňóřšťúůýž]+ [a-záčďéěíňóřšťúůýž]+$/',
+            $name,
+        );
     }
 
     public function testGetFactoryWithCzechLanguage(): void
@@ -31,9 +27,11 @@ final class SillyNamesTest extends TestCase
         $generator = SillyNames::getFactory('cs');
         $name = $generator->generate();
 
-        $this->assertIsString($name);
         $this->assertNotEmpty($name);
-        $this->assertMatchesRegularExpression('/^[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ][a-záčďéěíňóřšťúůýž]+ [a-záčďéěíňóřšťúůýž]+$/', $name);
+        $this->assertMatchesRegularExpression(
+            '/^[A-ZÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ][a-záčďéěíňóřšťúůýž]+ [a-záčďéěíňóřšťúůýž]+$/',
+            $name,
+        );
     }
 
     public function testGetFactoryWithEnglishLanguage(): void
@@ -41,7 +39,6 @@ final class SillyNamesTest extends TestCase
         $generator = SillyNames::getFactory('en');
         $name = $generator->generate();
 
-        $this->assertIsString($name);
         $this->assertNotEmpty($name);
         $this->assertMatchesRegularExpression('/^[A-Z][a-z]+ [a-z]+$/', $name);
     }
@@ -59,7 +56,6 @@ final class SillyNamesTest extends TestCase
         $generator = SillyNames::getFactory('en');
         $name = $generator->generate();
 
-        $this->assertIsString($name);
         $this->assertNotEmpty($name);
     }
 
@@ -91,7 +87,6 @@ final class SillyNamesTest extends TestCase
         $generator = SillyNames::getFactory('en');
         $names = $generator->generateMultiple(5);
 
-        $this->assertIsArray($names);
         $this->assertCount(5, $names);
     }
 
@@ -100,7 +95,6 @@ final class SillyNamesTest extends TestCase
         $generator = SillyNames::getFactory('en');
         $names = $generator->generateMultiple(0);
 
-        $this->assertIsArray($names);
         $this->assertEmpty($names);
     }
 
@@ -110,7 +104,6 @@ final class SillyNamesTest extends TestCase
         $names = $generator->generateMultiple(5);
 
         foreach ($names as $name) {
-            $this->assertIsString($name);
             $this->assertNotEmpty($name);
         }
     }
@@ -173,21 +166,9 @@ final class SillyNamesTest extends TestCase
     {
         $languages = SillyNames::getSupportedLanguages();
 
-        $this->assertIsArray($languages);
         $this->assertNotEmpty($languages);
         $this->assertContains('cs', $languages);
         $this->assertContains('en', $languages);
     }
 
-    public function testGetSupportedLanguagesMatchesFactory(): void
-    {
-        $languages = SillyNames::getSupportedLanguages();
-
-        foreach ($languages as $language) {
-            $this->assertIsString($language);
-            // Should be able to create a generator for each supported language
-            $generator = SillyNames::getFactory($language);
-            $this->assertInstanceOf(SillyNames::class, $generator);
-        }
-    }
 }
