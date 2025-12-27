@@ -145,8 +145,9 @@ Examples:
 ## Available Words
 
 ### English Dictionary
-- **Adjectives**: swift, clever, happy, mighty, brave, wise, quiet, bright, cheerful, friendly, creative, energetic, funny, kind, loyal, honest, patient, calm, playful, graceful, bold, curious, gentle, mysterious
-- **Subjects**: lion, tiger, bear, wolf, owl, dolphin, elephant, koala, unicorn, dragon, phoenix, rabbit, fox, lizard, turtle, horse, panda, cat, dog
+- **Adjectives**: 116 words including swift, clever, happy, mighty, brave, wise, quiet, bright, cheerful, friendly, creative, energetic, funny, kind, loyal, honest, patient, calm, playful, graceful, bold, curious, gentle, mysterious, adventurous, dazzling, whimsical, zealous, and many more
+- **Subjects**: 90 animals including lion, tiger, bear, wolf, owl, dolphin, elephant, koala, unicorn, dragon, phoenix, rabbit, fox, penguin, narwhal, platypus, octopus, and many more
+- **Total combinations**: Over 10,000 unique silly names!
 
 ### Czech Dictionary
 - **Adjectives**: rychlý, chytrý, veselý, silný, odvážný, moudrý, tichý, jasný, šťastný, přátelský, kreativní, energický, zábavný, laskavý, věrný, upřímný, trpělivý, odpočatý, hravý

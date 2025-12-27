@@ -54,7 +54,9 @@ final readonly class SillyNames
 
     public function generate(): string
     {
+        /** @var string $adjective */
         $adjective = $this->randomizer->pickArrayKeys($this->adjectives, 1)[0];
+        /** @var string $subject */
         $subject = $this->randomizer->pickArrayKeys($this->subjects, 1)[0];
 
         $adjectiveText = $this->adjectives[$adjective];

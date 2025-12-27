@@ -57,7 +57,6 @@ final class CzechGrammarTest extends TestCase
         $names = $generator->generateMultiple(50);
         
         foreach ($names as $name) {
-            $this->assertIsString($name);
             $this->assertNotEmpty($name);
             
             $parts = explode(' ', $name);

@@ -21,7 +21,9 @@
   "require-dev": {
     "phpunit/phpunit": "^10.0|^11.0|^12.0",
     "phpunit/php-code-coverage": "*",
-    "phpstan/phpstan": "^2.0"
+    "phpstan/phpstan": "^2.0",
+    "phpstan/extension-installer": "^1.4",
+    "phpstan/phpstan-phpunit": "^2.0"
   },
   "scripts": {
     "test": "phpunit",
@@ -33,7 +35,10 @@
   },
   "config": {
     "optimize-autoloader": true,
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "phpstan/extension-installer": true
+    }
   },
   "minimum-stability": "stable",
   "prefer-stable": true

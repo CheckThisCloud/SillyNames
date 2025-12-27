@@ -20,7 +20,6 @@ final class CzechDictionaryTest extends TestCase
     {
         $adjectives = $this->dictionary->getAdjectives();
 
-        $this->assertIsArray($adjectives);
         $this->assertNotEmpty($adjectives);
     }
 
@@ -29,7 +28,6 @@ final class CzechDictionaryTest extends TestCase
         $adjectives = $this->dictionary->getAdjectives();
 
         foreach ($adjectives as $adjective) {
-            $this->assertIsString($adjective);
             $this->assertNotEmpty($adjective);
         }
     }
@@ -48,7 +46,6 @@ final class CzechDictionaryTest extends TestCase
     {
         $subjects = $this->dictionary->getSubjects();
 
-        $this->assertIsArray($subjects);
         $this->assertNotEmpty($subjects);
     }
 
@@ -57,7 +54,6 @@ final class CzechDictionaryTest extends TestCase
         $subjects = $this->dictionary->getSubjects();
 
         foreach ($subjects as $subject) {
-            $this->assertIsString($subject);
             $this->assertNotEmpty($subject);
         }
     }
