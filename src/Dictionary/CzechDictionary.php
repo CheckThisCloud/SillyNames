@@ -84,7 +84,7 @@ final readonly class CzechDictionary implements DictionaryInterface
         if ($gender === 'F') {
             // Convert masculine -ý to feminine -á
             if (str_ends_with($adjective, 'ý')) {
-                return substr($adjective, 0, -1) . 'á';
+                return mb_substr($adjective, 0, -1) . 'á';
             }
             // Handle -í adjectives (they don't change)
             if (str_ends_with($adjective, 'í')) {
